@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>다온기술 업무포탈</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=1222112d11">
+<link rel="stylesheet" type="text/css" href="css/noticeboard.css">
+<link rel="stylesheet" type="text/css" href="css/all.css">
+<script src="js/all.js"></script>
+
+<style>html,body{margin:10px;padding:0;height:100%; }</style>
+</head>
+<body>
+
+<div class = "gnb">
+	<div class = "logoArea">
+		<img class="logo" src = "image/daonlogo.png"  onclick="goMenu('HOME')">
+	</div>
+	<div class = "gnbList">
+		<span class="gnbBtn" onclick="goMenu('noticeboard',0)"> 
+		게시판
+			<span class="gnbDrop">
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',0)">최근게시물</span>
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',1)">공지사항</span>
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',2)">참고 자료</span>
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',3)">일정</span>
+			</span>
+		</span>
+		<span class="gnbBtn" onclick="goMenu('approval',0)"> 
+		전자결재
+			<span class="gnbDrop" >
+				<span class="gnbDropMenu" onclick="goMenu('approval',0)">결재신청</span>
+				<span class="gnbDropMenu" onclick="goMenu('approval',1)">결재내역</span>			
+			</span>
+		</span>
+		
+		<span class="gnbBtn" onclick="goMenu('attendance',0)"> 
+			근태관리
+			<span class="gnbDrop" >
+				<span class="gnbDropMenu" onclick="goMenu('attendance',0)">설계시수</span>
+				<span class="gnbDropMenu" onclick="goMenu('attendance',1)">연차 사용현황</span>
+			</span>
+		</span>
+	</div>		
+</div>
+
+
+<div class="nav1">
+	<div class="nav1-date"> 
+		<span id="todaydate">00:00:00 Mon</span>
+		<br>
+		<span id="todayclock">00:00:00</span>
+	</div>
+	<ul class="menu">
+		<li>
+				<label for="btn" class="first"  onclick="textchange('recentboard')" >&nbsp;<i class="fa-solid fa-clipboard fa-lg"></i>&nbsp;&nbsp;&nbsp;게시판</label>
+			
+			<input type="checkbox" id="btn">
+			<ul>
+				<li onclick="textchange('recentboard')">최근 게시물</li>
+				<li onclick="textchange('notice')">공지사항</li>
+				<li onclick="textchange('refboard')">참고자료</li>
+				<li><a href="#">일정</a></li>
+			</ul>
+		</li>
+		<br>
+		<li>
+			
+				<label for="btn-2" class="second"><i class="fa-solid fa-rectangle-list fa-lg "></i>&nbsp;&nbsp;&nbsp;전자결재</label>
+			
+			<input type="checkbox" id="btn-2">
+			<ul>
+				<li><a href="#">결재신청</a></li>
+				<li><a href="#">결재내역</a></li>
+			</ul>
+		</li>
+		<br>
+		<li>
+			
+				<label for="btn-3" class="third"><i class="fa-solid fa-calendar-check fa-lg"></i>&nbsp;&nbsp;&nbsp;근태관리</label>
+			
+			<input type="checkbox" id="btn-3">
+			<ul>
+				<li><a href="#">설계시수</a></li>
+				<li><a href="#">연차 사용현황</a></li>
+			</ul>
+		</li>
+	</ul>
+
+</div>
+
+
+<div class="Content"> 	
+	<div class="Content-title">최근게시물</div>
+	<div class="Content-search">
+		<form class="box">
+			<input type="text">
+			<input type="submit" value="search">	
+		</form>
+	</div>
+	<div class="content-board">
+		<table class = "board_list">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>글쓴이</th>
+					<th>작성일</th>
+					<th>조회수</th>
+				</tr>
+			</thead>
+			<tbody id="my-tbody" >
+				<tr>
+					<td>1</td>
+					<td class="tit">
+						<a href="#"> 10월 문화체육 행사 일정 <img class="newicon" src = "image/new.png" height="20px"></a>
+					</td>
+					<td>관리자</td>
+					<td>2022-10-26</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td class="tit">
+						<a href="#"> 독감 예방접종 희망자 모집 안내</a>
+					</td>
+					<td>관리자</td>
+					<td>2022-10-11</td>
+					<td>32</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td class="tit">
+						<a href="#"> [게시공유][NEWS/미디어] 자동차운반선 2척 수주</a>
+					</td>
+					<td>관리자</td>
+					<td>2021-12-20</td>
+					<td>225</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td class="tit">
+						<a href="#"> [비공식] 행사 일정 공유</a>
+					</td>
+					<td>관리자</td>
+					<td>2020-11-05</td>
+					<td>317</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td class="tit">
+						<a href="#"> [재공지] 설계부문 2020년 3분기 임원주관5S (안전/보안 점검) 일정 안내 건</a>
+					</td>
+					<td>관리자</td>
+					<td>2020-11-05</td>
+					<td>525</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="paging">
+			<a href="#" class="bt"><i class="fa-solid fa-angles-left"></i></a>
+			<a href="#" class="bt"><i class="fa-solid fa-angle-left"></i></a>
+			<a href="#" class="num on">1</a>
+			<a href="#" class="num">2</a>
+			<a href="#" class="num">3</a>
+			<a href="#" class="bt"><i class="fa-solid fa-angle-right"></i></a>
+			<a href="#" class="bt"><i class="fa-solid fa-angles-right"></i></a>
+		</div>
+	</div>		
+	
+</div>
+
+<div class="footer">	
+		<div class="footer-info">
+		
+				<img class="footerlogo" src = "image/100X50daonLogoTxt.png">
+			
+	
+		</div>
+		<div class="footer-subInfo">
+			<span>COPYRIGHTⓒ 다온기술 All rights reserved</span>
+		</div>
+		
+</div>
+
+
+
+
+<script type="text/javascript" src="js/ui.js?ver=1"></script> 
+<script type="text/javascript" src="js/noticeboard.js"></script>
+
+</script>
+</body>
+</html>

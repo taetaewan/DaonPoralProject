@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>다온기술 업무포탈</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=1222112d11">
+<link rel="stylesheet" type="text/css" href="css/all.css">
+<link rel="stylesheet" type="text/css" href="css/approval.css">
+<script src="js/all.js"></script>
+<style>html,body{margin:10px;padding:0;height:100%; }</style>
+</head>
+<body>
+
+<div class = "gnb">
+	<div class = "logoArea">
+		<img class="logo" src = "image/daonlogo.png"  onclick="goMenu('HOME')">
+	</div>
+	<div class = "gnbList">
+		<span class="gnbBtn" onclick="goMenu('noticeboard',0)"> 
+		게시판
+			<span class="gnbDrop">
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',0)">최근게시물</span>
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',1)">공지사항</span>
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',2)">참고 자료</span>
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',3)">일정</span>
+			</span>
+		</span>
+		<span class="gnbBtn" onclick="goMenu('approval',0)"> 
+		전자결재
+			<span class="gnbDrop" >
+				<span class="gnbDropMenu" onclick="goMenu('approval',0)">결재신청</span>
+				<span class="gnbDropMenu" onclick="goMenu('approval',1)">결재내역</span>			
+			</span>
+		</span>
+		
+		<span class="gnbBtn" onclick="goMenu('attendance',0)"> 
+			근태관리
+			<span class="gnbDrop" >
+				<span class="gnbDropMenu" onclick="goMenu('attendance',0)">설계시수</span>
+				<span class="gnbDropMenu" onclick="goMenu('attendance',1)">연차 사용현황</span>
+			</span>
+		</span>
+	</div>		
+</div>
+
+
+<div class="nav1">
+	<div class="nav1-date"> 
+		<span id="todaydate">00:00:00 Mon</span>
+		<br>
+		<span id="todayclock">00:00:00</span>
+	</div>
+	<ul class="menu">
+		<li>
+				<label for="btn" class="first">&nbsp;<i class="fa-solid fa-clipboard fa-lg"></i>&nbsp;&nbsp;&nbsp;게시판</label>
+			
+			<input type="checkbox" id="btn">
+			<ul>
+				<li><a href="#">최근 게시물</a></li>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">참고자료</a></li>
+				<li><a href="#">일정</a></li>
+			</ul>
+		</li>
+		<br>
+		<li>
+			
+				<label for="btn-2" class="second"><i class="fa-solid fa-rectangle-list fa-lg "></i>&nbsp;&nbsp;&nbsp;전자결재</label>
+			
+			<input type="checkbox" id="btn-2">
+			<ul>
+				<li><a href="#">결재신청</a></li>
+				<li><a href="#">결재내역</a></li>
+			</ul>
+		</li>
+		<br>
+		<li>
+			
+				<label for="btn-3" class="third"><i class="fa-solid fa-calendar-check fa-lg"></i>&nbsp;&nbsp;&nbsp;근태관리</label>
+			
+			<input type="checkbox" id="btn-3">
+			<ul>
+				<li><a href="#">설계시수</a></li>
+				<li><a href="#">연차 사용현황</a></li>
+			</ul>
+		</li>
+	</ul>
+
+</div>
+
+<!--
+</template>
+<div id="target"></div>
+<script src="js/template.js"></script>
+
+<script type="text/javascript" src="js/template.js"></script>
+-->
+
+<div class="Att-Content">
+	<div class="Att-Content-warp">
+		<div class="Att-Content-Up">
+			<div class="Att-UH-title">결재 신청</div>
+			
+			<div class="approvalForm">
+				<input type="radio" id="cb1" checked>
+				<label for="cb1">근태신청서 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+				<input type="radio" id="cb2">
+				<label for="cb2">실습일지 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+				<input type="radio" id="cb3">
+				<label for="cb3">비품신청서&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+				<input type="radio" id="cb4">
+				<label for="cb4">기타신청&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+			</div>
+			
+			
+		</div>
+		
+		
+		<div class="Att-Content-Down">
+			<div class="Att-Content-Usage-History"></div>
+			
+			<div class="Att-UH-board">
+				
+					<table class="Att-UH-board_list">
+						
+						  <tr class="UH-list-top">
+							<td>소속</td>
+							<td>직위</td>
+							<td>성명</td>
+							<td>비상연락처</td>
+							<td>첨부파일</td>
+						  </tr>
+
+						  <tr>
+							<td>
+								<select name="team" id="team">
+									<option value="team1">개발</option>
+									<option value="team2">라이브러리</option>
+								</select>
+							</td>
+							<td>사원</td>
+							<td>김태완</td>
+							<td>010-1234-3444</td>
+							<td><input type="button" name="file" value="파일찾기" id="file"></td>
+						  </tr>
+						  <tr class="UH-list-top">
+							<td>사유</td>
+							<td>근태 구분</td>
+							<td>출퇴근</td>
+							<td>기간</td>
+							<td>업무인수자</td>
+							
+						  </tr>
+						  <tr>
+							<td ><input type="text" name="reason" value="가사" id="reason"></td>
+							<td>
+								<select name="attType" id="attType">
+									<option value="type1">반월차</option>
+									<option value="type1">월차</option>
+									<option value="type1">조퇴</option>
+									<option value="type1">병가</option>
+								</select>
+							</td>
+							<td>
+								<select name="time" id="time">
+							    <option value="time">시간 선택</option>
+								<option value="time1">7:00 - 16:00</option>
+								<option value="time2">9:00 - 18:00</option>
+								</select>
+						    </td>
+							<td>
+								<input type="date" id="date">
+							</td>
+							<td>
+								<select name="person" id="person">
+									<option value="person">조혜영</option>
+									<option value="person1"></option>
+									<option value="person2"></option>
+								</select>
+							</td>
+							
+						  </tr>
+						  
+					</table>
+				<input type="button" id="submitBtn" value="제출하기">
+			</div>		
+		</div>
+
+			
+		</div>	
+	</div>
+</div>
+
+<div class="footer">	
+		<div class="footer-info">
+		
+				<img class="footerlogo" src = "image/100X50daonLogoTxt.png">
+			
+	
+		</div>
+		<div class="footer-subInfo">
+			<span>COPYRIGHTⓒ 다온기술 All rights reserved</span>
+		</div>
+		
+</div>
+
+
+
+<script type="text/javascript" src="js/ui.js?ver=1"></script>
+
+</body>
+</html>

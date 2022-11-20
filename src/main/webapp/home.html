@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>다온기술 업무포탈</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=1222112d11">
+<link rel="stylesheet" type="text/css" href="css/home.css">
+<link rel="stylesheet" type="text/css" href="css/all.css">
+<script src="js/all.js"></script>
+<style>html,body{margin:10px;padding:0;height:100%; }</style>
+</head>
+<body>
+
+<div class = "gnb">
+	<div class = "logoArea">
+		<img class="logo" src = "image/daonlogo.png"  onclick="goMenu('HOME')">
+	</div>
+	<div class = "gnbList">
+		<span class="gnbBtn" onclick="goMenu('noticeboard',0)"> 
+		게시판
+			<span class="gnbDrop">
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',0)">최근게시물</span>
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',1)">공지사항</span>
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',2)">참고 자료</span>
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',3)">일정</span>
+			</span>
+		</span>
+		<span class="gnbBtn" onclick="goMenu('approval',0)"> 
+		전자결재
+			<span class="gnbDrop" >
+				<span class="gnbDropMenu" onclick="goMenu('approval',0)">결재신청</span>
+				<span class="gnbDropMenu" onclick="goMenu('approval',1)">결재내역</span>			
+			</span>
+		</span>
+		
+		<span class="gnbBtn" onclick="goMenu('attendance',0)"> 
+			근태관리
+			<span class="gnbDrop" >
+				<span class="gnbDropMenu" onclick="goMenu('attendance',0)">설계시수</span>
+				<span class="gnbDropMenu" onclick="goMenu('attendance',1)">연차 사용현황</span>
+			</span>
+		</span>
+	</div>		
+</div>
+
+
+<div class="nav1">
+	<div class="nav1-date"> 
+		<span id="todaydate">00:00:00 Mon</span>
+		<br>
+		<span id="todayclock">00:00:00</span>
+	</div>
+	<ul class="menu">
+		<li>
+				<label for="btn" class="first">&nbsp;<i class="fa-solid fa-clipboard fa-lg"></i>&nbsp;&nbsp;&nbsp;게시판</label>
+			
+			<input type="checkbox" id="btn">
+			<ul>
+				<li><a href="#">최근게시물</a></li>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">참고자료</a></li>
+				<li><a href="#">일정</a></li>
+			</ul>
+		</li>
+		<br>
+		<li>
+			
+				<label for="btn-2" class="second"><i class="fa-solid fa-rectangle-list fa-lg "></i>&nbsp;&nbsp;&nbsp;전자결재</label>
+			
+			<input type="checkbox" id="btn-2">
+			<ul>
+				<li><a href="#">결재신청</a></li>
+				<li><a href="#">결재내역</a></li>
+			</ul>
+		</li>
+		<br>
+		<li>
+			
+				<label for="btn-3" class="third"><i class="fa-solid fa-calendar-check fa-lg"></i>&nbsp;&nbsp;&nbsp;근태관리</label>
+			
+			<input type="checkbox" id="btn-3">
+			<ul>
+				<li><a href="#">설계시수</a></li>
+				<li><a href="#">연차 사용현황</a></li>
+			</ul>
+		</li>
+	</ul>
+
+</div>
+
+<div class="Content"> 
+	<div class="Content-left">
+		<div class="content-user">
+			<div class="content-user-wrap">
+				<div class="usericon">
+					<div style="color: rgb(158, 195, 221);">
+						<i class="fa-solid fa-circle-user fa-3x"></i>
+					</div>
+				</div>
+				<div class="user-name">사용자</div>
+				<div class="user-status"><a href="#">로그아웃</a></div>
+			</div>
+		</div>
+		<div class= "content-status">
+			<div class="content-status-wrap">		
+				<div class="content-statusapp"> 
+					<span class="status-left">결재 진행사항 :</span>
+					<span style="text-align: right" class="status-app-value"> 1 </span>
+					<span style="text-align: right" class="status-app-text"> 건 </span>
+				</div>
+				<div class="content-statusdayoff"> 	
+					<span class="status-left">잔여 연차개수 :</span>
+					<span style="text-align: right" class="status-dayoff-value"> 10 </span>
+					<span style="text-align: right" class="status-dayoff-text"> 개 </span>
+				</div>
+			</div>	
+		</div>
+		<div class="content-event"> 
+			<span class="calendar-title">일정 및 이벤트</span>
+			
+			<div class="calendar">
+        		<div class="calendar-header">
+            		<span class="month-picker" id="month-picker">February</span>
+            		<div class="year-picker">
+                		<span class="year-change" id="prev-year">
+                    		<pre><</pre>
+                		</span>
+                		<span id="year">2021</span>
+                		<span class="year-change" id="next-year">
+                    		<pre>></pre>
+               			 </span>
+           			 </div>
+        		</div>
+        		<div class="calendar-body">
+            		<div class="calendar-week-day">
+                		<div>Sun</div>
+                		<div>Mon</div>
+                		<div>Tue</div>
+                		<div>Wed</div>
+                		<div>Thu</div>
+                		<div>Fri</div>
+                		<div>Sat</div>
+            		</div>
+            		<div class="calendar-days"></div>
+        		</div>     
+        		<div class="month-list"></div>
+    		</div>
+		</div>			
+	</div>
+	
+	<div class="Content-right">
+		<div class="content-board">
+			<table class="board_list">
+				<caption>최근 게시글</caption>
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>글쓴이</th>
+						<th>작성일</th>
+						<th>조회수</th>
+					</tr>
+				</thead>
+				<tbody id = "my-tbody">
+					<tr>
+						<td>1</td>
+						<td class="tit">
+							<a href="#"> 공지사항 <img class="newicon" src = "image/new.png" height="20px"></a>
+						</td>
+						<td>관리자</td>
+						<td>2022-10-26</td>
+						<td>10</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td class="tit">
+							<a href="#"> 공지사항</a>
+						</td>
+						<td>관리자</td>
+						<td>2022-10-11</td>
+						<td>32</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td class="tit">
+							<a href="#"> 공지사항</a>
+						</td>
+						<td>관리자</td>
+						<td>2021-12-20</td>
+						<td>225</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td class="tit">
+							<a href="#"> 공지사항</a>
+						</td>
+						<td>관리자</td>
+						<td>2020-11-05</td>
+						<td>317</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td class="tit">
+							<a href="#"> 공지사항</a>
+						</td>
+						<td>관리자</td>
+						<td>2020-11-05</td>
+						<td>525</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="paging">
+				<a href="#" class="bt">첫 페이지</a>
+				<a href="#" class="bt">이전 페이지</a>
+				<a href="#" class="num on">1</a>
+				<a href="#" class="num">2</a>
+				<a href="#" class="num">3</a>
+				<a href="#" class="bt">다음 페이지</a>
+				<a href="#" class="bt">마지막 페이지</a>
+			</div>
+		</div>
+		<div class="content-approval">
+			<div class="approval-title">결재 상태</div>
+			<div class="approval-date"><span id="approvaldate">0000.00.00 Mon</span></div>
+			<div class="approval_list">
+				<div class="approval_list_head">
+					<div class="approval-status"> </div>
+					<div class="approval-category">항목</div>
+					<div class="approval-content">내용</div>
+					<div class="approval-approver">결재자</div>
+				</div>
+				<div class="approval_list_body">
+					<div class="item">
+						<div class="approval-status">
+							<div class="status1">진행중</div>
+						</div>
+						<div class="approval-category">오후반차</div>
+						<div class="approval-content">2022년 10월 28일(4시간)<br>출퇴근 변동없음</div>
+						<div class="approval-approver">인수자 / 나아주 실장 / 박남수 대표</div>
+					</div>
+					<div class="item">
+						<div class="approval-status">
+							<div class="status2">진행완료</div>
+						</div>
+						<div class="approval-category">설계시수</div>
+						<div class="approval-content"> </div>
+						<div class="approval-approver">나아주 실장 / 박남수 대표</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="footer">	
+		<div class="footer-info">
+		
+				<img class="footerlogo" src = "image/100X50daonLogoTxt.png">
+			
+	
+		</div>
+		<div class="footer-subInfo">
+			<span>COPYRIGHTⓒ 다온기술 All rights reserved</span>
+		</div>
+		
+</div>
+
+
+
+<script type="text/javascript" src="js/ui.js?ver=1"></script>
+
+</body>
+</html>

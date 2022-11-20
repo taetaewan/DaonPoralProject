@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>다온기술 업무포탈</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=1222112d11">
+<link rel="stylesheet" type="text/css" href="css/all.css">
+<link rel="stylesheet" type="text/css" href="css/approval2.css">
+
+<script src="js/all.js"></script>
+<style>html,body{margin:10px;padding:0;height:100%; }</style>
+</head>
+<body>
+
+<div class = "gnb">
+	<div class = "logoArea">
+		<img class="logo" src = "image/daonlogo.png"  onclick="goMenu('HOME')">
+	</div>
+	<div class = "gnbList">
+		<span class="gnbBtn" onclick="goMenu('noticeboard',0)"> 
+		게시판
+			<span class="gnbDrop">
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',0)">최근게시물</span>
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',1)">공지사항</span>
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',2)">참고 자료</span>
+				<span class="gnbDropMenu" onclick="goMenu('noticeboard',3)">일정</span>
+			</span>
+		</span>
+		<span class="gnbBtn" onclick="goMenu('approval',0)"> 
+		전자결재
+			<span class="gnbDrop" >
+				<span class="gnbDropMenu" onclick="goMenu('approval',0)">결재신청</span>
+				<span class="gnbDropMenu" onclick="goMenu('approval',1)">결재내역</span>			
+			</span>
+		</span>
+		
+		<span class="gnbBtn" onclick="goMenu('attendance',0)"> 
+			근태관리
+			<span class="gnbDrop" >
+				<span class="gnbDropMenu" onclick="goMenu('attendance',0)">설계시수</span>
+				<span class="gnbDropMenu" onclick="goMenu('attendance',1)">연차 사용현황</span>
+			</span>
+		</span>
+	</div>		
+</div>
+
+
+<div class="nav1">
+	<div class="nav1-date"> 
+		<span id="todaydate">00:00:00 Mon</span>
+		<br>
+		<span id="todayclock">00:00:00</span>
+	</div>
+	<ul class="menu">
+		<li>
+				<label for="btn" class="first">&nbsp;<i class="fa-solid fa-clipboard fa-lg"></i>&nbsp;&nbsp;&nbsp;게시판</label>
+			
+			<input type="checkbox" id="btn">
+			<ul>
+				<li><a href="#">최근 게시물</a></li>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">참고자료</a></li>
+				<li><a href="#">일정</a></li>
+			</ul>
+		</li>
+		<br>
+		<li>
+			
+				<label for="btn-2" class="second"><i class="fa-solid fa-rectangle-list fa-lg "></i>&nbsp;&nbsp;&nbsp;전자결재</label>
+			
+			<input type="checkbox" id="btn-2">
+			<ul>
+				<li><a href="#">결재신청</a></li>
+				<li><a href="#">결재내역</a></li>
+			</ul>
+		</li>
+		<br>
+		<li>
+			
+				<label for="btn-3" class="third"><i class="fa-solid fa-calendar-check fa-lg"></i>&nbsp;&nbsp;&nbsp;근태관리</label>
+			
+			<input type="checkbox" id="btn-3">
+			<ul>
+				<li><a href="#">설계시수</a></li>
+				<li><a href="#">연차 사용현황</a></li>
+			</ul>
+		</li>
+	</ul>
+
+</div>
+
+<!--
+</template>
+<div id="target"></div>
+<script src="js/template.js"></script>
+
+<script type="text/javascript" src="js/template.js"></script>
+-->
+
+<div class="Att-Content">
+	<div class="Att-Content-warp">
+		<div class="Att-UH-title">결재 내역</div>
+		
+		<div class="Att-Content-Up">
+			
+		   
+			<table class="Att-Content-table" id="black">
+				<thead>
+				<tbody>
+					<tr>
+						<td rowspan="2" class="Att-table-icon">진행</td>
+						<td rowspan="2" class="Att-Content-value">2</td>
+					</tr>
+					
+				</tbody>
+				</thead>
+			</table>
+			<table class="Att-Content-table" id="green">
+				
+				<thead>
+				<tbody>
+					<tr>
+						<td rowspan="2" class="Att-table-icon">완료</td>
+						<td rowspan="2" class="Att-Content-value">2</td>
+					</tr>
+					
+				</tbody>
+				</thead>
+			</table>
+			<table class="Att-Content-table" id="red">
+				
+				<thead>
+				<tbody>
+					<tr>
+						<td rowspan="2" class="Att-table-icon">부결</td>
+						<td rowspan="2" class="Att-Content-value">1</td>
+					</tr>
+					
+				</tbody>
+				</thead>
+			</table>
+		</div>
+	
+		<div class="Att-Content-Down">
+			
+			<input type="date" id="date">
+			<div class="Att-UH-board">
+				
+				<table class="Att-UH-board_list">
+					<thead>
+						<tr class="UH-list-top">
+							<th>결재상태</th>
+							<th>결재문서</th>
+							<th>현재 결재자</th>
+							<th>결재 신청일</th>
+							<th>결재 완료일</th>
+							<th>문서 확인</th>
+						</tr>
+						<tr>
+							<td data-th="Supplier Code">
+							  진행
+							</td>
+							<td data-th="Supplier Name">
+								근태신청서
+							</td>
+							<td data-th="Invoice Number">
+								실장 나아주
+							</td>
+							<td data-th="Invoice Date">
+								2022-11-08
+							</td>
+							<td data-th="Due Date">
+								-
+							</td>
+							<td data-th="Net Amount">
+								<a href="">문서보기</a>
+							</td>
+						  </tr>
+						  <tr>
+							<td data-th="Supplier Code">
+							  진행
+							</td>
+							<td data-th="Supplier Name">
+								근태신청서
+							</td>
+							<td data-th="Invoice Number">
+								실장 나아주
+							</td>
+							<td data-th="Invoice Date">
+								2022-11-08
+							</td>
+							<td data-th="Due Date">
+								-
+							</td>
+							<td data-th="Net Amount">
+								<a href="">문서보기</a>
+							</td>
+						  </tr>
+						  <tr>
+							<td data-th="Supplier Code">
+								완료
+							</td>
+							<td data-th="Supplier Name">
+								근태신청서
+							</td>
+							<td data-th="Invoice Number">
+								대표 박남수
+							</td>
+							<td data-th="Invoice Date">
+								2022-11-07
+							</td>
+							<td data-th="Due Date">
+								2022-11-08
+							</td>
+							<td data-th="Net Amount">
+								<a href="">문서보기</a>
+							</td>
+						  </tr>
+						  <tr>
+							<td data-th="Supplier Code">
+							  완료
+							</td>
+							<td data-th="Supplier Name">
+								근태신청서
+							</td>
+							<td data-th="Invoice Number">
+								대표 박남수
+							</td>
+							<td data-th="Invoice Date">
+								2022-11-02
+							</td>
+							<td data-th="Due Date">
+								2022-11-03
+							</td>
+							<td data-th="Net Amount">
+								<a href="">문서보기</a>
+							</td>
+						  </tr>
+						  <tr>
+							<td data-th="Supplier Code">
+							  부결
+							</td>
+							<td data-th="Supplier Name">
+								근태신청서
+							</td>
+							<td data-th="Invoice Number">
+								대표 박남수
+							</td>
+							<td data-th="Invoice Date">
+								2022-11-01
+							</td>
+							<td data-th="Due Date">
+								2022-11-01
+							</td>
+							<td data-th="Net Amount">
+								<a href="">문서보기</a>
+							</td>
+						  </tr>
+					</thead>
+					<tbody>
+						
+					</tbody>
+				</table>
+				<div class="UH-paging">
+					<a href="#" class="bt"><i class="fa-solid fa-angles-left"></i></a>
+					<a href="#" class="bt"><i class="fa-solid fa-angle-left"></i></a>
+					<a href="#" class="num on">1</a>
+					<a href="#" class="bt"><i class="fa-solid fa-angle-right"></i></a>
+					<a href="#" class="bt"><i class="fa-solid fa-angles-right"></i></a>
+				</div>
+			</div>		
+		</div>
+
+			
+		</div>	
+	</div>
+</div>
+
+<div class="footer">	
+		<div class="footer-info">
+		
+				<img class="footerlogo" src = "image/100X50daonLogoTxt.png">
+			
+	
+		</div>
+		<div class="footer-subInfo">
+			<span>COPYRIGHTⓒ 다온기술 All rights reserved</span>
+		</div>
+		
+</div>
+
+
+
+<script type="text/javascript" src="js/ui.js?ver=1"></script>
+
+</body>
+</html>
